@@ -7,17 +7,17 @@ from time import sleep
 from picamera2 import Picamera2, Preview
 
 picam = Picamera2()
-picam.start_preview(Preview.QTGL)
+picam.start_preview(Preview.DRM)
 preview_config = picam.create_preview_configuration()
 capture_config = picam.create_still_configuration()
 
 picam.configure(preview_config)
 picam.start()
-time.sleep(2)
+sleep(2)
 
 image = picam.switch_mode_and_capture_file(capture_config, "photo.jpg")
 
-time.sleep(5)
+sleep(5)
 picam.close()
 
 
