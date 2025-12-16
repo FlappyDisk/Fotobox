@@ -27,8 +27,8 @@ picam.close()
 
 
 
-try:
-    import RPi.GPIO as GPIO
-except ImportError:
-    print("RPi GPIO not found - operating in simulation mode")
-    fotoboxCfg['nopi']            = True   
+# try:
+#     import RPi.GPIO as GPIO
+# except ImportError:
+#     print("RPi GPIO not found - operating in simulation mode")
+#     fotoboxCfg['nopi']            = True   
