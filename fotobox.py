@@ -15,8 +15,7 @@ picam.configure(preview_config)
 picam.start()
 time.sleep(2)
 
-image = picam.switch_mode_and_capture_image(capture_config)
-image.show()
+image = picam.switch_mode_and_capture_file(capture_config, "photo.jpg")
 
 time.sleep(5)
 picam.close()
