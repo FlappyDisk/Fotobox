@@ -11,8 +11,18 @@
         padding: 0;
         margin: 0;
         font-family: monospace, sans-serif;
+        overflow: hidden;
+        width: 1280px;
+        height: 1024px;
     ">
-    <div id="fotobox" style="width: 1280px; height: 1024px; background-image: url('backdrop.png');">
+    <div id="fotobox"
+        style="width: 1280px;
+        height: 1024px;
+        background-image: url('backdrop.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        ">
 
         <div
             id="infobox"
@@ -22,7 +32,7 @@
                 top: 24px;
                 width: 825px;
                 height: 105px;
-                font-size: 24px;
+                font-size: 36px;
                 overflow: hidden;
                 display: flex;
                 align-items: center;
@@ -30,15 +40,16 @@
                 text-align: center;
             "
         >
-        ${info}
+        <b>${info}</b>
+        
 		
 		<img src="qr.png" 
 		style="
-        width: 200px;
-        height: 200px;
+        width: 250px;
+        height: 250px;
         object-fit: contain;
         position: fixed;
-        right: 15px;
+        left: 1000px;
         top: 24px;
         " 
 		/>
@@ -51,7 +62,7 @@
                 id="Button1"
                 style="
                     position: fixed;
-                    right: 15px;
+                    left: 900px;
                     top: 550px;
                     font-size: 40px;
                     width: 295px;
@@ -63,14 +74,14 @@
                     overflow: hidden;
                 ">
                 <div>
-                ${btn1}
+                <b>${btn1}</b>
             </div>
 
             <div
                 id="Button2"
                 style="
                     position: fixed;
-                    right: 15px;
+                    left: 900px;
                     top: 700px;
                     font-size: 40px;
                     width: 295px;
@@ -82,14 +93,14 @@
                     overflow: hidden;
                 ">
                 <div>
-                ${btn2}
+                <b>${btn2}</b>
             </div>
 
             <div
                 id="Button3"
                 style="
                     position: fixed;
-                    right: 15px;
+                    left: 900px;
                     top: 850px;
                     font-size: 40px;
                     width: 295px;
@@ -101,11 +112,11 @@
                     overflow: hidden;
                 ">
                 <div>
-                ${btn3}
+                <b>${btn3}</b>
             </div>
         </nav>
 
-        <img src="${image}" style="height: 720px; width: 960px; background-image: url('init.png'); position: fixed; left: 9px; bottom: 3px;" />
+        <img src="${image}" style="height: 720px; width: 960px; background-image: url('init.png'); position: fixed; left: 9px; top: 215px;" />
     </div>
 </body>
 </html>
