@@ -37,7 +37,8 @@ class PhotoBox(QMainWindow):
         self.view.setHtml(html, QUrl.fromLocalFile(str(design_dir)+"/"))
 
     def render_html(self, layout_file, info, btn1, btn2, btn3, image):
-        html = layout_file.read_text(encoding="utf-8")
+        layout_path = Path(layout_file)
+        html = layout_path.read_text(encoding="utf-8")
 
         return (
             html.replace("${info}", info)
@@ -52,28 +53,11 @@ window = PhotoBox()
 window.show()
 sys.exit(app.exec())
         
-picam = Picamera2()
-picam.start_preview(Preview.DRM, x=fotoboxCfg['cam-p-x'], y=fotoboxCfg['cam-p-y'], width = fotoboxCfg['cam-p-width'], height = fotoboxCfg['cam-p-height'], transform = fotoboxCfg['cam-p-hflip'])
-preview_config = picam.create_preview_configuration()
-capture_config = picam.create_still_configuration()
+# picam = Picamera2()
+# picam.start_preview(Preview.DRM, x=fotoboxCfg['cam-p-x'], y=fotoboxCfg['cam-p-y'], width = fotoboxCfg['cam-p-width'], height = fotoboxCfg['cam-p-height'], transform = Transform(hflip=fotoboxCfg['cam-p-hflip']))
+# preview_config = picam.create_preview_configuration()
+# capture_config = picam.create_still_configuration()
 
-picam.configure(preview_config)
-picam.start()
-sleep(2)
-
-#image = picam.switch_mode_and_capture_file(capture_config, "photo.jpg")
-
-sleep(5)
-picam.close()
-
-
-
-
-
-
-
-# try:
-#     import RPi.GPIO as GPIO
-# except ImportError:
-#     print("RPi GPIO not found - operating in simulation mode")
-#     fotoboxCfg['nopi']            = True   
+# picam.configure(preview_config)
+# picam.start()
+# sleep(2)

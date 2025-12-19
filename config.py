@@ -8,7 +8,7 @@ fotoboxCfg['cam-p-width']     = 960
 fotoboxCfg['cam-p-height']    = 800
 fotoboxCfg['cam-p-x']         = 9
 fotoboxCfg['cam-p-y']         = 195
-fotoboxCfg['cam-p-hflip']     = Transform(hflip=1) # False = Like a camera, True = Like a mirror
+fotoboxCfg['cam-p-hflip']     = 1 # False = Like a camera, True = Like a mirror
 
 # PiCam v1: 2592x1944, v2: 3280x2464
 fotoboxCfg['cam-c-width']     = 3280
@@ -22,19 +22,20 @@ fotoboxCfg['save']            = '/home/niklas/fotobox/images/'
 
 fotoboxCfg['countdown']       = 3 # Seconds
 
-fotoboxCfg['project_dir']     = '~/fotobox'
-fotoboxCfg['design_dir']      = '~/fotobox/design/'
-fotoboxCfg['layout_file']      = '~/fotobox/design/layout.html'
+# fotoboxCfg['project_dir']     = '~/fotobox'
+# fotoboxCfg['design_dir']      = '~/fotobox/design/'
+# fotoboxCfg['layout_file']      = '~/fotobox/design/layout.html'
+####### Debug ###########
+fotoboxCfg['project_dir']     = 'E:\Programmieren\Fotobox'
+fotoboxCfg['design_dir']      = 'E:\Programmieren\Fotobox/design/'
+fotoboxCfg['layout_file']      = 'E:\Programmieren\Fotobox/design/layout.html'
 
 fotoboxText = {}
 
-fotoboxText['info-home']    = 'Hallo und willkommen in dieser Fotobox!<br>Drücke einfach auf &quot;Aufnahme&quot; und los geht es!'
+fotoboxText['info-home']    = 'Scanne den QR-Code, da kannst du die Bilder herunterladen'
 fotoboxText['info-count']   = 'Los geht es!<hr><span style="font-size: 200%; font-weight: bolder;">${countdown}</span>'
 fotoboxText['info-capture'] = '<span style="font-size: 200%; font-weight: bolder;">Bitte lächeln!</span>'
-fotoboxText['info-review']  = 'Alles OK?<br>Wenn ja drücke auf "Speichern". Doch zu blöd geguckt? Dann versuch es gleich nochmal.'
-fotoboxText['info-view']    = 'Hier kannst du dir die Fotos der Veranstaltung direkt anschauen. Mit "Nächstes" und "Vorheriges" kannst du zwischen den Bildern wechseln. Mit "Zurück" geht es wieder zur Kamera.'
-
-fotoboxText['btn-capture']  = 'Aufnahme ▶'
+fotoboxText['btn-capture']  = 'Neuer Versuch ▶'
 fotoboxText['btn-view']     = 'Ansehen ▶'
 fotoboxText['btn-save']     = 'Speichern ▶'
 fotoboxText['btn-recapture'] = '<span style="font-size: 75%">Neuer Versuch</span> ▶'
