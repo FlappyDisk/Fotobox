@@ -8,7 +8,7 @@ fotoboxCfg['cam-p-width']     = 960
 fotoboxCfg['cam-p-height']    = 800
 fotoboxCfg['cam-p-x']         = 9
 fotoboxCfg['cam-p-y']         = 195
-fotoboxCfg['cam-p-hflip']     = True # False = Like a camera, True = Like a mirror
+fotoboxCfg['cam-p-hflip']     = Transform(hflip=1) # False = Like a camera, True = Like a mirror
 
 # PiCam v1: 2592x1944, v2: 3280x2464
 fotoboxCfg['cam-c-width']     = 3280
@@ -21,6 +21,10 @@ fotoboxCfg['temp']            = '/tmp/fotobox/'
 fotoboxCfg['save']            = '/home/niklas/fotobox/images/'
 
 fotoboxCfg['countdown']       = 3 # Seconds
+
+fotoboxCfg['project_dir']     = '~/fotobox'
+fotoboxCfg['design_dir']      = '~/fotobox/design/'
+fotoboxCfg['layout_file']      = '~/fotobox/design/layout.html'
 
 fotoboxText = {}
 

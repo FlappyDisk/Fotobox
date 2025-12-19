@@ -4,16 +4,56 @@ import subprocess
 from config import fotoboxCfg, fotoboxText
 from datetime import datetime, date, time
 from time import sleep
-from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtCore import QTime, QTimer, QUrl
-from PyQt5.QtGui import QIcon, QPixmap, QCursor
-from PyQt5.QtWidgets import QApplication, QDialog
-from PyQt5.QtWebEngineWidgets import QWebEngineView
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
-from picamera2 import Picamera2, Preview
+from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWebEngineWidgets import QWebEngineView
+from PyQt6.QtCore import QUrl
+from pathlib import Path
 
+
+class PhotoBox(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Fotobox")
+        self.resize(fotoboxCfg['window-width'], fotoboxCfg['window-height'])
+
+        self.view = QWebEngineView(self)
+        self.setCentralWidget(self.view)
+
+        # Paths
+        project_dir = fotoboxCfg['project_dir']
+        design_dir = fotoboxCfg['design_dir']
+        layout_file = fotoboxCfg['layout_file']
+
+        html = self.render_html(
+            layout_file,
+            info=fotoboxText['info-home'],
+            btn1=fotoboxText['btn-capture'],
+            btn2=fotoboxText['btn-view'],
+            btn3="",
+            image="placeholder.png"  # ← just filename
+        )
+
+        # IMPORTANT: baseUrl points to design folder
+        self.view.setHtml(html, QUrl.fromLocalFile(str(design_dir)+"/"))
+
+    def render_html(self, layout_file, info, btn1, btn2, btn3, image):
+        html = layout_file.read_text(encoding="utf-8")
+
+        return (
+            html.replace("${info}", info)
+                .replace("${btn1}", btn1)
+                .replace("${btn2}", btn2)
+                .replace("${btn3}", btn3)
+                .replace("${image}", image)
+        )
+        
+app = QApplication(sys.argv)
+window = PhotoBox()
+window.show()
+sys.exit(app.exec())
+        
 picam = Picamera2()
-picam.start_preview(Preview.DRM)
+picam.start_preview(Preview.DRM, x=fotoboxCfg['cam-p-x'], y=fotoboxCfg['cam-p-y'], width = fotoboxCfg['cam-p-width'], height = fotoboxCfg['cam-p-height'], transform = fotoboxCfg['cam-p-hflip'])
 preview_config = picam.create_preview_configuration()
 capture_config = picam.create_still_configuration()
 
@@ -21,32 +61,10 @@ picam.configure(preview_config)
 picam.start()
 sleep(2)
 
-image = picam.switch_mode_and_capture_file(capture_config, "photo.jpg")
+#image = picam.switch_mode_and_capture_file(capture_config, "photo.jpg")
 
 sleep(5)
 picam.close()
-
-class Ui_Form_mod(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.setWindowTitle("Fotobox")
-        Form.resize(fotoboxCfg['window-width'], fotoboxCfg['window-height'])
-        Form.setMinimumSize(QtCore.QSize(fotoboxCfg['window-width'], fotoboxCfg['window-height']))
-        Form.setMaximumSize(QtCore.QSize(fotoboxCfg['window-width'], fotoboxCfg['window-height']))
-        Form.setHtml("Initializing...")
-        self.countdownTime = fotoboxCfg['countdown']
-        self.entries = None
-        self.tplImage = "init.png"
-        self.tplFooter = self.tplFooterOrg
-        self.tplInstruct = "Instruction placeholder"
-        self.tplBtn1 = "Button 1"
-        self.tplBtn2 = "Button 2"
-        self.tplBtn3 = "Button 3"
-        with open('design/template.html', 'r') as myfile:
-            self.template=myfile.read().replace('\n', '')
-
-        if fotoboxCfg['nopi']:
-            self.tplFooterOrg = "Demo simulation mode"
 
 
 
