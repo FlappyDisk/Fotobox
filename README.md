@@ -2,7 +2,7 @@
 Entwicklung Fotobox
 
 # Installs
-sudo apt install python3 python3-venv python3-full pip libcamera-apps python3-picamera2 git python3-pyqt5
+sudo apt install python3 python3-venv python3-full pip libcamera-apps python3-picamera2 git
 sudo apt update
 sudo apt upgrade
 
