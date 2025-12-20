@@ -4,17 +4,21 @@ import subprocess
 from config import fotoboxCfg, fotoboxText
 from datetime import datetime, date, time
 from time import sleep
-from PyQt6.QtWidgets import QApplication, QMainWindow
-from PyQt6.QtWebEngineWidgets import QWebEngineView
-from PyQt6.QtCore import QUrl
 from pathlib import Path
+
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWebEngineWidgets import QWebEngineView
+from PyQt5.QtCore import QUrl
 
 
 class PhotoBox(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Fotobox")
-        self.resize(fotoboxCfg['window-width'], fotoboxCfg['window-height'])
+        self.resize(
+            fotoboxCfg['window-width'],
+            fotoboxCfg['window-height']
+        )
 
         self.view = QWebEngineView(self)
         self.setCentralWidget(self.view)
@@ -30,11 +34,14 @@ class PhotoBox(QMainWindow):
             btn1=fotoboxText['btn-capture'],
             btn2=fotoboxText['btn-view'],
             btn3="",
-            image="placeholder.png"  # ← just filename
+            image="placeholder.png"
         )
 
-        # IMPORTANT: baseUrl points to design folder
-        self.view.setHtml(html, QUrl.fromLocalFile(str(design_dir)+"/"))
+        # baseUrl must point to the design directory
+        self.view.setHtml(
+            html,
+            QUrl.fromLocalFile(str(design_dir) + "/")
+        )
 
     def render_html(self, layout_file, info, btn1, btn2, btn3, image):
         layout_path = Path(layout_file)
@@ -47,11 +54,14 @@ class PhotoBox(QMainWindow):
                 .replace("${btn3}", btn3)
                 .replace("${image}", image)
         )
-        
-app = QApplication(sys.argv)
-window = PhotoBox()
-window.show()
-sys.exit(app.exec())
+
+
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    window = PhotoBox()
+    window.show()
+    sys.exit(app.exec_())
+
         
 # picam = Picamera2()
 # picam.start_preview(Preview.DRM, x=fotoboxCfg['cam-p-x'], y=fotoboxCfg['cam-p-y'], width = fotoboxCfg['cam-p-width'], height = fotoboxCfg['cam-p-height'], transform = Transform(hflip=fotoboxCfg['cam-p-hflip']))
