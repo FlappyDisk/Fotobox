@@ -37,10 +37,11 @@ class PhotoBox(QMainWindow):
             image="placeholder.png"
         )
 
-        # baseUrl must point to the design directory
+        design_dir = Path(fotoboxCfg['design_dir']).resolve()
+
         self.view.setHtml(
             html,
-            QUrl.fromLocalFile(str(design_dir) + "/")
+            QUrl(design_dir.as_uri() + "/")
         )
 
     def render_html(self, layout_file, info, btn1, btn2, btn3, image):
