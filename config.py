@@ -22,13 +22,13 @@ fotoboxCfg['save']            = '/home/niklas/fotobox/images/'
 
 fotoboxCfg['countdown']       = 3 # Seconds
 
-# fotoboxCfg['project_dir']     = '~/fotobox'
-# fotoboxCfg['design_dir']      = '~/fotobox/design/'
-# fotoboxCfg['layout_file']      = '~/fotobox/design/layout.html'
+fotoboxCfg['project_dir']     = '~/fotobox'
+fotoboxCfg['design_dir']      = '~/fotobox/design/'
+fotoboxCfg['layout_file']      = '~/fotobox/design/layout.html'
 ####### Debug ###########
-fotoboxCfg['project_dir']     = 'E:\Programmieren\Fotobox'
-fotoboxCfg['design_dir']      = 'E:\Programmieren\Fotobox/design/'
-fotoboxCfg['layout_file']      = 'E:\Programmieren\Fotobox/design/layout.html'
+# fotoboxCfg['project_dir']     = 'E:\Programmieren\Fotobox'
+# fotoboxCfg['design_dir']      = 'E:\Programmieren\Fotobox/design/'
+# fotoboxCfg['layout_file']      = 'E:\Programmieren\Fotobox/design/layout.html'
 
 fotoboxText = {}
 
